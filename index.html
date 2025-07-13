@@ -19,39 +19,127 @@
     }
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f0f0f0;
+      background-color:white;
       margin: 0 10px;
     }
-    nav {
-      background-color: #00796b;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    /* --- HEADER AND NAVIGATION STYLES --- */
+    .header-container {
+      background: linear-gradient(45deg, #00796b, #22b55d);
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1100;
     }
-    nav ul {
-      list-style: none;
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo-section {
+      display: flex;
+      align-items: center;
       gap: 15px;
     }
-    nav ul li {
-      display: inline;
+    .logo-section img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid white;
     }
-    nav ul li a {
-      text-decoration: none;
+    .company-info h1 {
       color: white;
+      font-size: 2.2em;
+      margin: 0;
       font-weight: bold;
-      transition: color 0.3s ease, background-color 0.3s ease;
-      padding: 5px 10px;
-      border-radius: 5px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
-    nav ul li a:hover {
-      color: #ffccbc;
-      background-color: #22b55d;
+    .company-info p {
+      color: #e0f2f1;
+      font-size: 1.1em;
+      margin: 5px 0 0 0;
+      font-weight: 500;
+    }
+    .nav-container {
+      background-color: #00796b;
+      width: 100%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 100px;
+      left: 0;
+      z-index: 1099;
+    }
+    .nav-content {
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-evenly;
+      border-radius: 0;
+      overflow: hidden;
+    }
+    .nav-tab {
+      width: 350px;
+      flex: 1;
+      padding: 20px;
+      background: none;
+      background-color: linear-gradient(45deg, #22b55d, #00796b);
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      color: WHITE;
+      transition: all 0.3s ease;
+      position: relative;
+      text-align: center;
+    }
+    .nav-tab:hover {
+      background: linear-gradient(45deg, #00796b, #22b55d);
+      color: #495057;
+    }
+    .nav-tab.active {
+      width: 350px;
+      color:#00796b;
+      background: whitesmoke;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    }
+    .nav-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background:whitesmoke;
+    }
+    .back-button {
+      position: fixed;
+      display: block;
+      top: 170px;
+      right: 20px;
+      padding: 12px 24px;
+      background: linear-gradient(45deg, #00796b, #26a69a);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .back-button:hover {
+      background: linear-gradient(45deg, #26a69a, #00796b);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
     }
     header {
-      background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
-      height: 300px;
+      background:whitesmoke no-repeat center center/cover;
+      height: 100px;
+      margin-top: 170px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -62,21 +150,62 @@
       text-align: center;
     }
     @media (max-width: 600px) {
-      header {
-        font-size: 20px;
-      }
+      header { font-size: 20px; }
+      .header-container, .nav-container { position: static; }
+      .back-button { position: static; margin: 15px 0; }
     }
+    /* --- END HEADER/NAVIGATION --- */
+
+    .container {
+      background-color: whitesmoke;
+      padding: 20px;
+      margin: 0px 10;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px 10px;
+      max-width: 1400px;
+      margin: 0px 0;
+      border-radius: 8px; 
+      box-shadow: 100 0 10px rgba(0, 0, 0, 0.1); 
+      width: 100%;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2.centered {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #00796b;
+    }
+    .main{
+      background-color: white;
+    }
+
     .search-bar-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 20px 0;
+      background-color: whitesmoke  ;
       position: relative;
     }
     .search-icon {
       width: 40px;
       height: 40px;
-      background-color: #EAEAEA;
+      background: linear-gradient(45deg, #00796b, #22b55d);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -88,7 +217,16 @@
       font-size: 20px;
       color: #00796b;
     }
+
+    .search-bar::placeholder {
+      color: white;
+      opacity: 1;
+    }
+
     .search-bar {
+      margin: 30px;
+      background: linear-gradient(45deg, #00796b, #22b55d);
+      color: white;
       width: 80%;
       max-width: 600px;
       padding: 10px 20px;
@@ -102,14 +240,8 @@
     .search-bar:focus {
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     }
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px 10px;
-    }
     .card {
-      background: #dddddd;
+      background: linear-gradient(45deg, #00796b, #22b55d);
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       text-align: center;
@@ -117,12 +249,13 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .card:hover {
+      background: linear-gradient(45deg, #22b55d, #00796b);
       transform: translateY(-8px);
       box-shadow: 0 8px 20px rgba(100, 96, 96, 0.7);
     }
     .card a {
       text-decoration: none;
-      background-color: #00796b;
+      background: linear-gradient(45deg, #22b55d, #00796b);
       color: white;
       padding: 15px 25px;
       border-radius: 5px;
@@ -132,7 +265,7 @@
       margin-top: 15px;
     }
     .card a:hover {
-      background-color: #22b55d;
+      background: linear-gradient(45deg, #00796b, #22b55d);
     }
     footer {
       background-color: #f0f0f0;
@@ -186,93 +319,111 @@
     .button:hover{
       background-color: #45a049;
     }
+    @media (max-width: 800px) {
+      body { padding-right: 0; }
+      .container { padding: 10px; margin: 100px 10px 20px; }
+      .nav-content { flex-direction: column; }
+      .nav-tab, .nav-tab.active { width: 100%; }
+      header { margin-top: 120px; }
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-  <nav>
-    <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
-      <img src="https://github.com/JoshiRudra-devop/shreeji-instruments/blob/main/logo.png?raw=true" alt="Company Logo" style="width: 40px; border-radius:30%; height: 40px; margin-right: 10px;">
-      <h1 style="color: white; margin: 0;">SHREEJI INSTRUMENTS</h1>
-    </a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#footer">About</a></li>
-      <li><a href="cloud_dashboard.html">Dashboard </a></li>
-      <li><a href="contactUs.html">Contact Us</a></li>
-    </ul>
-    
-  </nav>
+  <!-- Header Section -->
+  <div class="header-container">
+    <div class="header-content">
+      <div class="logo-section">
+        <img src="logo.png" alt="Company Logo">
+        <div class="company-info">
+          <h1>SHREEJI INSTRUMENTS</h1>
+          <p>Welcome to Shreeji Instruments - Create Calibration Certificates Easily.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Section -->
+  <div class="nav-container">
+    <div class="nav-content">
+      <a href="index.html"><button class="nav-tab active">Home</button></a>
+      <a href="#footer"><button class="nav-tab">About</button></a>
+      <a href="cloud_dashboard.html"><button class="nav-tab">Dashboard</button></a>
+      <a href="contactUs.html"><button class="nav-tab">Contact Us</button></a>
+    </div>
+  </div>
+  <button class="back-button" onclick="window.history.back()">← Back</button>
   <header> SMART CALIBRATION CERTIFICATE GENERATOR. </header>
-  <div class="search-bar-container">
-    <div class="search-icon" id="search-icon">
-      🔍
+  <div class="main">
+    <div class="search-bar-container">
+      <div class="search-icon" id="search-icon">
+        🔍
+      </div>
+      <input type="text" class="search-bar" placeholder="Search for Instrument..." onfocus="moveIcon()" onblur="resetIcon()">
     </div>
-    <input type="text" class="search-bar" placeholder="Search for Instrument..." onfocus="moveIcon()" onblur="resetIcon()">
-  </div>
-  <div class="container">
-    <div class="card">
-      <a href="autolevel.html">Auto Level </a>
+    <div class="container">
+      <div class="card">
+        <a href="autolevel.html">Auto Level </a>
+      </div>
+      <div class="card">
+        <a href="aggregate_impact.html">Aggregate Impact Value App</a>
+      </div>
+      <div class="card">
+        <a href="ctm.html">Cube Testing Machine</a>
+      </div>
+      <div class="card">
+        <a href="conpenitometer.html">Cone Penitometer</a>
+      </div>
+      <div class="card">
+        <a href="cube_mould.html"> Cube Mould</a>
+      </div>
+      <div class="card">
+        <a href="digital_thermo.html">Digital Thermometer</a>
+      </div>
+      <div class="card">
+        <a href="elogation.html">Elongation Gauge</a>
+      </div>
+      <div class="card">
+        <a href="oven.html">Electrical Hot Air Oven</a>
+      </div>
+      <div class="card">
+        <a href="flakness.html">Flakness Gauge</a>
+      </div>
+      <div class="card">
+        <a href="general.html">General Formate</a>
+      </div>
+      <div class="card">
+        <a href="measuring_cylinder.html">Measuring Cylinder</a>
+      </div>
+      <div class="card">
+        <a href="rapid.html">Rapid Moisture Meter </a>
+      </div>
+      <div class="card">
+        <a href="seives.html">Sieves</a>
+      </div>
+      <div class="card">
+        <a href="slumcone.html">Slumcone</a>
+      </div>
+      <div class="card">
+        <a href="TS.html">Total Station</a>
+      </div>
+      <div class="card">
+        <a href="water_bath.html">Water Bath</a>
+      </div>
+      <div class="card">
+        <a href="weight_balance.html">Weight Balance</a>
+      </div>
+      <div class="card">
+        <a href="weigh_batcher.html">Weigh Batcher</a>
+      </div>
+      <div class="card">
+        <a href="cloud_cubeTry.html">Cloud cube mould</a>
+      </div>
     </div>
-    <div class="card">
-      <a href="aggregate_impact.html">Aggregate Impact Value App</a>
-    </div>
-     <div class="card">
-      <a href="ctm.html">Cube Testing Machine</a>
-    </div>
-    <div class="card">
-      <a href="conpenitometer.html">Cone Penitometer</a>
-    </div>
-    <div class="card">
-      <a href="cube_mould.html"> Cube Mould</a>
-    </div>
-    <div class="card">
-      <a href="digital_thermo.html">Digital Thermometer</a>
-    </div>
-    <div class="card">
-      <a href="elogation.html">Elongation Gauge</a>
-    </div>
-    <div class="card">
-      <a href="oven.html">Electrical Hot Air Oven</a>
-    </div>
-    <div class="card">
-      <a href="flakness.html">Flakness Gauge</a>
-    </div>
-    <div class="card">
-      <a href="general.html">General Formate</a>
-    </div>
-    <div class="card">
-      <a href="measuring_cylinder.html">Measuring Cylinder</a>
-    </div>
-    <div class="card">
-      <a href="rapid.html">Rapid Moisture Meter </a>
-    </div>
-    <div class="card">
-      <a href="seives.html">Sieves</a>
-    </div>
-     <div class="card">
-      <a href="slumcone.html">Slumcone</a>
-    </div>
-    <div class="card">
-      <a href="TS.html">Total Station</a>
-    </div>
-   
-    <div class="card">
-      <a href="water_bath.html">Water Bath</a>
-    </div>
-     <div class="card">
-      <a href="weight_balance.html">Weight Balance</a>
-    </div>
-    <div class="card">
-      <a href="weigh_batcher.html">Weigh Batcher</a>
-    </div>
-     <div class="card">
-      <a href="cloud_cubeTry.html">Cloud cube mould</a>
-    </div>
-  </div>
-   <div class="fulllebcard card">
+    <div class="fulllebcard card">
       <a href="full_leb.html">Full Lab</a>
     </div>
+  </div>
   <footer id="footer">
     <div class="social-icons">
       <a href="https://www.facebook.com/profile.php?id=100064984329642&mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -284,7 +435,7 @@
     <p style="color:#00796b"> <b> SHREEJI INSTRUMENTS</b></p>
     <p><i class="fa fa-map-marker"></i> Ghodasar, Ahmedabad, Gujarat. 380050</p>
     <p >|  <i class="fa fa-user-circle"></i> : +91 99049-04610 , +91 93282-01463 ,+91 93771-96244 | </p>
-     <p>|  Email: shreejiinstrument83@yahoo.com  |</p>
+    <p>|  Email: shreejiinstrument83@yahoo.com  |</p>
     <p><a href="https://www.shreejiinstruments.com" target="_blank"> <i class="fa fa-globe"></i> | Visit our official website |</a></p>
     <div class="copyright">
       &copy; 2025 Shreeji Instruments. All rights reserved.
@@ -292,9 +443,7 @@
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script>
-
-
- // 🔐 Protect the page
+    // 🔐 Protect the page
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         document.getElementById('user-info').innerText = "Logged in as: " + user.phoneNumber;
